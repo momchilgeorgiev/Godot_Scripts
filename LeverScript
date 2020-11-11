@@ -1,0 +1,23 @@
+extends Area2D
+
+class_name LeverLogic
+
+func _ready() -> void:
+	$TextPNG.hide()
+	connect("body_entered", self, "show_option_interaction")
+	connect("body_exited", self, "hide_option_interaction")
+
+func show_option_interaction(body):
+	if body.name == "Knight":			
+		$TextPNG.show()	
+		
+			
+func hide_option_interaction(body):
+	if body.name == "Knight":
+		$TextPNG.hide()
+
+
+func _input(event):
+	if event.is_action_pressed("Interact"):
+		$AnimatedSprite.play("lever_down")
+		
